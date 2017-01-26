@@ -1,24 +1,21 @@
-/** TODO:
- * 1. Add these new functions: percentage, inverse, factorial, square and square root
- * 2. Bootstrap it to make it pretty!
- * 3. User can only type numbers in the display (30 max!), and the numbers are right aligned.
- * 4. Fix divide by 0 errors!
- * 5. Add the ability to clear the current input, but not memory.
- * 6. Challenge: Add trig functions (in radian AND degree mode)
- * 7. Extra Challenge: Add mc, m+, m-, mr butons that work!
- * 8. Super Challenge: Add ( and ) buttons that work!
- * 9. Super Duper Challenge: Add exponents (negatives too!)
- */
+
 var currentInput = "0";
 var memory = "0";
 var operator = 0;
 var otherMemory = currentInput;
 var startMode = "";
-// Helper function for displaying the current input
+
+/**
+ * Helper function for displaying the current input
+ */
 function displayCurrentInput() {
     document.getElementById('screen').value = currentInput;
 }
-// Adds a digit to the current input
+
+/**
+ * Adds a digit to the current input
+ * @param {number} dig The digit being added
+ */
 function addDigit(dig) {
     if (currentInput.length + 1 > 18) {
         alert("No more than 18 characters");
@@ -31,7 +28,10 @@ function addDigit(dig) {
     }
     displayCurrentInput();
 }
-// Adds a decimal to the current input
+
+/**
+ * Adds a decimal to the current input
+ */
 function addDecimal() {
     if (currentInput.length == 0) {
         //no leading ".", use "0."
@@ -45,7 +45,10 @@ function addDecimal() {
     }
     displayCurrentInput();
 }
-// Clears everything.
+
+/**
+ * Clears everything.
+ */
 function allClear() {
     currentInput = "";
     console.log("Current input cleared");
@@ -56,7 +59,10 @@ function allClear() {
     startMode = "";
     displayCurrentInput();
 }
-// Stores the last operator pushed for multiply, divide, add, or subtract.
+/**
+ * Stores the last operator pushed for multiply, divide, add, subtract, or an exponential operation.
+ * @param {[[Type]]} op [[Description]]
+ */
 function storeOperator(op) {
     if (op.indexOf("*") > -1) {
         operator = 1;
@@ -74,8 +80,8 @@ function storeOperator(op) {
         operator = 5;
         // exponent
     };
-    memory = currentInput; //store value
-    currentInput = "";
+    memory = currentInput;  //store value
+    currentInput = "";      //Set current input to nothing to show that the user has done something
     displayCurrentInput();
     console.log(op);
     console.log(operator);
