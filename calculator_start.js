@@ -1,15 +1,15 @@
 
-var currentInput = "0";
+var current_input = "0";
 var memory = "0";
 var operator = 0;
-var otherMemory = currentInput;
-var startMode = "";
+var other_memory = current_input;
+var start_mode = "";
 
 /**
  * Helper function for displaying the current input
  */
 function displayCurrentInput() {
-    document.getElementById('screen').value = currentInput;
+    document.getElementById('screen').value = current_input;
 }
 
 /**
@@ -17,14 +17,14 @@ function displayCurrentInput() {
  * @param {number} dig The digit being added
  */
 function addDigit(dig) {
-    if (currentInput.length + 1 > 18) {
+    if (current_input.length + 1 > 18) {
         alert("No more than 18 characters");
     }
-    if ((eval(currentInput) == 0) && (currentInput.indexOf(".") == -1)) {
-        currentInput = dig;
+    if ((eval(current_input) == 0) && (current_input.indexOf(".") == -1)) {
+        current_input = dig;
     }
     else {
-        currentInput = currentInput + dig;
+        current_input = current_input + dig;
     }
     displayCurrentInput();
 }
@@ -33,14 +33,14 @@ function addDigit(dig) {
  * Adds a decimal to the current input
  */
 function addDecimal() {
-    if (currentInput.length == 0) {
+    if (current_input.length == 0) {
         //no leading ".", use "0."
-        currentInput = "0.";
+        current_input = "0.";
     }
     else {
         // First make sure one doesn't exist
-        if (currentInput.indexOf(".") == -1) {
-            currentInput = currentInput + ".";
+        if (current_input.indexOf(".") == -1) {
+            current_input = current_input + ".";
         }
     }
     displayCurrentInput();
@@ -50,13 +50,13 @@ function addDecimal() {
  * Clears everything.
  */
 function allClear() {
-    currentInput = "";
+    current_input = "";
     console.log("Current input cleared");
     operator = 0; //clear operator
     console.log("Operator cleared");
     memory = "0"; //clear memory
     console.log("Memory cleared");
-    startMode = "";
+    start_mode = "";
     displayCurrentInput();
 }
 /**
@@ -80,8 +80,8 @@ function storeOperator(op) {
         operator = 5;
         // exponent
     };
-    memory = currentInput;  //store value
-    currentInput = "";      //Set current input to nothing to show that the user has done something
+    memory = current_input;  //store value
+    current_input = "";      //Set current input to nothing to show that the user has done something
     displayCurrentInput();
     console.log(op);
     console.log(operator);
@@ -93,41 +93,41 @@ function storeOperator(op) {
  */
 function calculate() {
     if (operator == 1) {
-        currentInput = eval(memory) * eval(currentInput);
+        current_input = eval(memory) * eval(current_input);
     };
     if (operator == 2) {
-        if (eval(currentInput) == 0) {
-            currentInput = "undefined- cannot divide by zero";
+        if (eval(current_input) == 0) {
+            current_input = "undefined- cannot divide by zero";
         }
         else {
-            currentInput = eval(memory) / eval(currentInput);
+            current_input = eval(memory) / eval(current_input);
         }
     };
     if (operator == 3) {
-        currentInput = eval(memory) + eval(currentInput);
+        current_input = eval(memory) + eval(current_input);
     };
     if (operator == 4) {
-        currentInput = eval(memory) - eval(currentInput);
+        current_input = eval(memory) - eval(current_input);
     };
-    if (operator == 5 && currentInput < 0) {
-        var powerOf = -1 * eval(currentInput);
+    if (operator == 5 && current_input < 0) {
+        var power_of = -1 * eval(current_input);
         var base = eval(memory);
         var final = 1;
-        for (i = 0; i < powerOf; i++) {
+        for (i = 0; i < power_of; i++) {
             final = final * base;
             console.log(base + "^" + (i + 1) + " = " + final);
         }
-        currentInput = 1 / final;
+        current_input = 1 / final;
     }
     else if (operator == 5) {
-        var powerOf = eval(currentInput);
+        var power_of = eval(current_input);
         var base = eval(memory);
         var final = 1;
-        for (i = 0; i < powerOf; i++) {
+        for (i = 0; i < power_of; i++) {
             final = final * base;
             console.log(base + "^" + (i + 1) + " = " + final);
         }
-        currentInput = final;
+        current_input = final;
     };
     operator = 0; //clear operator
     memory = "0"; //clear memory
@@ -138,7 +138,7 @@ function calculate() {
  * Change the sign of the current input
  */
 function changeSign() {
-    currentInput = -1 * currentInput;
+    current_input = -1 * current_input;
     displayCurrentInput();
 }
 
@@ -146,7 +146,7 @@ function changeSign() {
  * Clear the current input back to 0
  */
 function pleaseClear() {
-    currentInput = "0";
+    current_input = "0";
     console.log("Current input cleared");
     console.log("Operator remains " + operator + " and memory remains " + memory);
     displayCurrentInput();
@@ -156,9 +156,9 @@ function pleaseClear() {
  * Change the current input to a percentage
  */
 function percentage() {
-    if (currentInput.indexOf("%") == -1) {
-        currentInput = currentInput * 100;
-        currentInput = currentInput.toString() + "%";
+    if (current_input.indexOf("%") == -1) {
+        current_input = current_input * 100;
+        current_input = current_input.toString() + "%";
     }
     displayCurrentInput();
 }
@@ -169,16 +169,16 @@ function percentage() {
 function factorial() {
     var i = "";
     var fact = 1;
-    if (currentInput == 0) {
-        currentInput = 1;
-    } else if (currentInput < 0) {
-        currentInput = "ERROR- input cannot be less than 0";
+    if (current_input == 0) {       // factorial of 0 is 1
+        current_input = 1;
+    } else if (current_input < 0) {        //negative numbers cant be factorials
+        current_input = "ERROR- input cannot be less than 0";
     }
     else {
-        for (i = 1; i <= currentInput; i++) {
+        for (i = 1; i <= current_input; i++) {
             fact = fact * i;
         }
-        currentInput = fact;
+        current_input = fact;
     }
     displayCurrentInput();
 }
@@ -187,23 +187,23 @@ function factorial() {
  * Calculate the square of the current input
  */
 function square() {
-    currentInput = currentInput * currentInput;
+    current_input = current_input * current_input;
     displayCurrentInput();
 }
 
 /**
- * Calculate the square root of the current input
+ * Calculate the square root of the current input, including i for negative inputs
  */
 function squareRoot() {
-    if (currentInput == -1) {
-        currentInput = "i";
+    if (current_input == -1) {
+        current_input = "i";
     }
-    else if (currentInput < 0) {
-        currentInput = Math.sqrt(currentInput * -1);
-        currentInput = currentInput.toString() + "i";
+    else if (current_input < 0) {
+        current_input = Math.sqrt(current_input * -1);
+        current_input = current_input.toString() + "i";
     }
     else {
-        currentInput = Math.sqrt(currentInput);
+        current_input = Math.sqrt(current_input);
     }
     displayCurrentInput();
 }
@@ -212,77 +212,116 @@ function squareRoot() {
  * Calculate the inverse of the current input
  */
 function inverse() {
-    currentInput = 1 / currentInput;
+    current_input = 1 / current_input;
     displayCurrentInput();
 }
 
 
-//trig functions:
+//trig functions
 
-
+/**
+ * Sets current input to pi
+ */
 function pi() {
-    currentInput = Math.PI;
+    current_input = Math.PI;
     displayCurrentInput();
-
 }
+
+/**
+ * Sin of current input
+ */
 function sin() {
-    currentInput = Math.sin(currentInput);
+    current_input = Math.sin(current_input);
     displayCurrentInput();
     checkZero();
 }
 
+/**
+ * Finds cosine of current inout
+ */
 function cos() {
-    currentInput = Math.cos(currentInput);
+    current_input = Math.cos(current_input);
     displayCurrentInput();
     checkZero();
 }
 
+/**
+ * Finds tanget of current input
+ */
 function tan() {
-    currentInput = Math.tan(currentInput);
-    displayCurrentInput();
+    current_input = Math.tan(current_input);
+    displaycurrent_input();
     checkZero();
 }
+
+/**
+ * Sets extremley small number to zero
+ */
 function checkZero() {
-    if (currentInput > 0 && currentInput < 0.000000001) {
-        currentInput = 0;
+    if (current_input > 0 && current_input < 0.000000001) {
+        current_input = 0;
         displayCurrentInput();
     }
 }
+
+/**
+ * Converts answer from degrees to radian
+ */
 function toRadian() {
-    if (startMode == "Radian") {
+    if (start_mode == "Radian") {
         console.log("already in radians");
     } else {
-    currentInput = currentInput * (Math.PI / 180);
-    startMode = "Radian";
+    current_input = current_input * (Math.PI / 180);
+    start_mode = "Radian";
     console.log("changing to radians");
     }
     displayCurrentInput();
 }
 
+/**
+ * Converts answer from radians to degrees
+ */
 function toDegree() {
-    if (startMode == "Degree") {
+    if (start_mode == "Degree") {
         console.log("already in degrees");
     } else {
-    currentInput = currentInput * (180 / Math.PI);
-    startMode = "Degree";
+    current_input = current_input * (180 / Math.PI);
+    start_mode = "Degree";
         console.log("changing to degrees");
     }
     displayCurrentInput();
 }
+
 // memory functions
+
+/**
+ * Sets current input as memory
+ */
 function ms() {
-    otherMemory = currentInput;
-    console.log(otherMemory);
+    other_memory = current_input;
+    console.log(other_memory);
 }
+
+/**
+ * Tells user what the memory is
+ */
 function mr() {
-    currentInput = otherMemory;
+    current_input = other_memory;
     displayCurrentInput();
-    console.log("memory is " + otherMemory);
+    console.log("memory is " + other_memory);
 }
+
+/**
+ * Adds current input to memory
+ */
 function mplus() {
-    otherMemory = eval(otherMemory) + eval(currentInput);
-    console.log("memory is " + otherMemory);
+    other_memory = eval(other_memory) + eval(current_input);
+    console.log("memory is " + other_memory);
 }
+
+/**
+ * Subtracts current input from the memory
+ */
 function mminus() {
-    otherMemory = eval(otherMemory) - eval(currentInput);
+    other_memory = eval(other_memory) - eval(current_input);
 }
