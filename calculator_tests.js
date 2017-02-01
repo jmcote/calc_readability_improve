@@ -1,3 +1,17 @@
+/*
+
+                Add test template
+
+QUnit.test( "Add ... test", function( assert ) {
+    allClear();
+    addDigit();
+
+    assert.equal(document.getElementById("screen").value, '', "Passed - Expected ...");
+    allClear();
+});
+
+*/
+
 // Test for inputing digits
 QUnit.test( "Add digits test", function( assert ) {
     addDigit('1');
@@ -43,6 +57,25 @@ QUnit.test( "Inverse Test", function( assert ) {
 
 
 //US4: As a user I want to be able to calculate the factorial of a number by simply pressing a button.
+QUnit.test( "Add factorial test", function( assert ) {
+    allClear();
+    addDigit(0);
+    factorial();
+    assert.equal(document.getElementById("screen").value, '1', "Passed - Expected 1");
+    allClear();
+    addDigit(1);
+    factorial();
+    assert.equal(document.getElementById("screen").value, '1', "Passed - Expected 1");
+    allClear();
+    addDigit(6);
+    factorial();
+    assert.equal(document.getElementById("screen").value, '720', "Passed - Expected 720");
+    allClear();
+    addDigit(12);
+    factorial();
+    assert.equal(document.getElementById("screen").value, '479001600', "Passed - Expected 479,001,600");
+    allClear();
+});
 
 
 //US5: As a user I want to be able to calculate the square root of a number by simply pressing a button.
