@@ -33,11 +33,13 @@ QUnit.test( "Change to percentage test", function( assert ) {
 });
 //US3: As a user, I want to be able to calculate the inverse of a number simply by pressing a button.
 QUnit.test( "Inverse Test", function( assert ) {
-    addDigit('4');
+    allClear();
+    addDigit(2);
     inverse();
-    assert.equal(doucment.getElementById("screen").value, "0.25", "Passed - Expected 0.25");
+    assert.equal(document.getElementById("screen").value, "0.5", "Passed - Expected 0.5");
     allClear();
 });
+
 
 
 //US4: As a user I want to be able to calculate the factorial of a number by simply pressing a button.
