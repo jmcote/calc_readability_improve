@@ -14,6 +14,7 @@ QUnit.test( "Add decimal test", function( assert ) {
     assert.equal(document.getElementById("screen").value, "0.2", "Passed - Expected 0.2");
     allClear();
 });
+
 //US1: As a user, I want to be able to press a button and change the sign of the current number that I have inputted into the calculator.
 QUnit.test( "Change of Sign Test", function( assert ) {
     //changeSign();
@@ -22,6 +23,7 @@ QUnit.test( "Change of Sign Test", function( assert ) {
     assert.equal(document.getElementById("screen").value, "-5", "Passed - Expected -5");
     allClear();
 });
+
 //US2: As a user I want to be able to press a button and change the inputed number on the calculator's screen to change to a percentage.
 
 
@@ -32,10 +34,53 @@ QUnit.test( "Change of Sign Test", function( assert ) {
 
 
 //US5: As a user I want to be able to calculate the square root of a number by simply pressing a button.
+QUnit.test( "Add root test", function( assert ) {
+    allClear();
+    addDigit(1);
+    addDigit(6);
+    squareRoot();
+    assert.equal(document.getElementById("screen").value, '4', "Passed - Expected 4");
+    allClear();
+    addDigit(1);
+    addDigit(4);
+    addDigit(4);
+    squareRoot();
+    assert.equal(document.getElementById("screen").value, '12', "Passed - Expected 12");
+    allClear();
+    addDigit(1);
+    addDigit(0);
+    addDigit(4);
+    addDigit(8);
+    addDigit(5);
+    addDigit(7);
+    addDigit(6);
+    squareRoot();
+    assert.equal(document.getElementById("screen").value, '1024', "Passed - Expected 1024");
+    allClear();
+});
 
 
 //US6: As a user I want to be able to calculate the square of a number by simply pressing a button.
-
+QUnit.test( "Add square test", function( assert ) {
+    allClear();
+    addDigit(1);
+    addDigit(2);
+    square();
+    assert.equal(document.getElementById("screen").value, '144', "Passed - Expected 144");
+    allClear();
+    addDigit(2);
+    addDigit(5);
+    square();
+    assert.equal(document.getElementById("screen").value, '625', "Passed - Expected 625");
+    allClear();
+    addDigit(1);
+    addDigit(0);
+    addDigit(2);
+    addDigit(4);
+    square();
+    assert.equal(document.getElementById("screen").value, '1048576', "Passed - Expected 1,048,576");
+    allClear();
+});
 
 //US7: As a user who sometimes makes mistakes when pressing buttons on the keypad, I want to be able to press a button that clears my current input, but not the stored procedure.
 QUnit.test( "Add clear test", function( assert ) {
