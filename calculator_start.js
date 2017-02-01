@@ -146,7 +146,7 @@ function changeSign() {
  * Clear the current input back to 0
  */
 function pleaseClear() {
-    current_input = "0";
+    current_input = "";
     console.log("Current input cleared");
     console.log("Operator remains " + operator + " and memory remains " + memory);
     displayCurrentInput();
