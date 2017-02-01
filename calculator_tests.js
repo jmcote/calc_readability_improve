@@ -14,6 +14,7 @@ QUnit.test( "Add ... test", function( assert ) {
 
 // Test for inputing digits
 QUnit.test( "Add digits test", function( assert ) {
+    allClear();
     addDigit('1');
     addDigit('2');
     assert.equal(document.getElementById("screen").value, "12", "Passed - Expected 12");
@@ -22,6 +23,7 @@ QUnit.test( "Add digits test", function( assert ) {
 
 // Test adding one, then two decimals
 QUnit.test( "Add decimal test", function( assert ) {
+    allClear();
     addDecimal();
     addDigit('2');
     addDecimal();
@@ -31,6 +33,7 @@ QUnit.test( "Add decimal test", function( assert ) {
 
 //US1: As a user, I want to be able to press a button and change the sign of the current number that I have inputted into the calculator.
 QUnit.test( "Change of Sign Test", function( assert ) {
+    allClear();
     changeSign();
     addDigit('5');
     changeSign();
@@ -40,11 +43,13 @@ QUnit.test( "Change of Sign Test", function( assert ) {
 
 //US2: As a user I want to be able to press a button and change the inputed number on the calculator's screen to change to a percentage.
 QUnit.test( "Change to percentage test", function( assert ) {
+    allClear();
     addDigit('5');
     percentage();
     assert.equal(document.getElementById("screen").value, "500%", "Passed - Expected 500%");
     allClear();
 });
+
 //US3: As a user, I want to be able to calculate the inverse of a number simply by pressing a button.
 QUnit.test( "Inverse Test", function( assert ) {
     allClear();
@@ -53,8 +58,6 @@ QUnit.test( "Inverse Test", function( assert ) {
     assert.equal(document.getElementById("screen").value, "0.5", "Passed - Expected 0.5");
     allClear();
 });
-
-
 
 //US4: As a user I want to be able to calculate the factorial of a number by simply pressing a button.
 QUnit.test( "Add factorial test", function( assert ) {
@@ -76,7 +79,6 @@ QUnit.test( "Add factorial test", function( assert ) {
     assert.equal(document.getElementById("screen").value, '479001600', "Passed - Expected 479,001,600");
     allClear();
 });
-
 
 //US5: As a user I want to be able to calculate the square root of a number by simply pressing a button.
 QUnit.test( "Add root test", function( assert ) {
@@ -104,7 +106,6 @@ QUnit.test( "Add root test", function( assert ) {
     allClear();
 });
 
-
 //US6: As a user I want to be able to calculate the square of a number by simply pressing a button.
 QUnit.test( "Add square test", function( assert ) {
     allClear();
@@ -129,6 +130,7 @@ QUnit.test( "Add square test", function( assert ) {
 
 //US7: As a user who sometimes makes mistakes when pressing buttons on the keypad, I want to be able to press a button that clears my current input, but not the stored procedure.
 QUnit.test( "Add clear test", function( assert ) {
+    allClear();
     addDigit('2');
     storeOperator('^');
     addDigit('3');
