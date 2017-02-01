@@ -138,6 +138,9 @@ function calculate() {
  * Change the sign of the current input
  */
 function changeSign() {
+    if (current_input == 0 || current_input == ""){
+        return;
+    }
     current_input = -1 * current_input;
     displayCurrentInput();
 }
