@@ -17,8 +17,10 @@ function displayCurrentInput() {
  * @param {number} dig The digit being added
  */
 function addDigit(dig) {
+    var tooManyDigits = false;
     if (current_input.length + 1 > 18) {
         alert("No more than 18 characters");
+        tooManyDigits = true;
     }
     if ((eval(current_input) == 0) && (current_input.indexOf(".") == -1)) {
         current_input = dig;
@@ -92,12 +94,14 @@ function storeOperator(op) {
  * Calculate using operator, the memory and what is current
  */
 function calculate() {
+    var divideByZero = false;
     if (operator == 1) {
         current_input = eval(memory) * eval(current_input);
     };
     if (operator == 2) {
         if (eval(current_input) == 0) {
             current_input = "undefined- cannot divide by zero";
+            divideByZero = true;
         }
         else {
             current_input = eval(memory) / eval(current_input);
