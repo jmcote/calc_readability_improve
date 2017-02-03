@@ -176,3 +176,26 @@ QUnit.test( "Add too many digits test", function( assert ) {
     assert.ok( checkTooManyDigits, "Passed - Expected too many digits error");
     allClear();
 });
+
+QUnit.test( "Add trig functions test", function( assert ) {
+    allClear();
+    addDigit(9);
+    addDigit(0);
+    toRadian();
+    mySin();
+    assert.equal(document.getElementById("screen").value, '1', "Passed - Expected sin(90degrees) = 1");
+    allClear();
+    addDigit(9);
+    addDigit(0);
+    toRadian();
+    myCos();
+    assert.equal(document.getElementById("screen").value, '0', "Passed - Expected cos(90degrees) = 0");
+    allClear();
+    addDigit(1)
+    addDigit(8);
+    addDigit(0);
+    toRadian();
+    myTan();
+    assert.equal(document.getElementById("screen").value, '-1', "Passed - Expected tan(180degrees) = -1");
+    allClear();
+});

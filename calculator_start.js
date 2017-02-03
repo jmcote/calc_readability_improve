@@ -3,7 +3,7 @@ var current_input = "0";
 var memory = "0";
 var operator = 0;
 var other_memory = current_input;
-var start_mode = "";
+var trig_mode = "Radian";
 var divideByZero = false;
 var tooManyDigits = false;
 
@@ -60,7 +60,6 @@ function allClear() {
     console.log("Operator cleared");
     memory = "0"; //clear memory
     console.log("Memory cleared");
-    start_mode = "";
     displayCurrentInput();
 }
 /**
@@ -239,11 +238,19 @@ function pi() {
 /**
  * Sin of current input
  */
-function sin() {
-    if (current_input == 0 || current_input == ""){
+function mySin() {
+    if (current_input === ""){
         return;
     }
-    current_input = Math.sin(current_input);
+    if (trig_mode == "Degree") {
+        var tempRad = calcToRadian(current_input);
+        current_input = Math.sin(tempRad);
+    } else if (trig_mode == "Radian") {
+        current_input = Math.sin(tempRad);
+    } else {
+        current_input = "Invalid trig mode";
+    }
+    //current_input = Math.sin(current_input);
     displayCurrentInput();
     checkZero();
 }
@@ -251,11 +258,19 @@ function sin() {
 /**
  * Finds cosine of current inout
  */
-function cos() {
-    if (current_input == 0 || current_input == ""){
+function myCos() {
+    if (current_input === ""){
         return;
     }
-    current_input = Math.cos(current_input);
+    if (trig_mode == "Degree") {
+        var tempRad = calcToRadian(current_input);
+        current_input = Math.cos(tempRad);
+    } else if (trig_mode == "Radian") {
+        current_input = Math.cos(tempRad);
+    } else {
+        current_input = "Invalid trig mode";
+    }
+    //current_input = Math.cos(current_input);
     displayCurrentInput();
     checkZero();
 }
@@ -263,20 +278,21 @@ function cos() {
 /**
  * Finds tanget of current input
  */
-function tan() {
+function myTan() {
     if (current_input == 0 || current_input == ""){
         return;
     }
-    if (start_mode == "Radians") {
-        var temp = = current_input * (180 / Math.PI);
-        if (current_input == 90 || current_input == 270) {
-         return;
-        }
-    }else if ( start_mode == "Degrees" && (current_input == 90 || current_input == 270)) {
-        return;
+    if (trig_mode == "Degree") {
+        var tempRad = calcToRadian(current_input);
+        current_input = Math.tan(tempRad);
+    } else if (trig_mode == "Radian") {
+        current_input = Math.tan(tempRad);
+    } else {
+        current_input = "Invalid trig mode";
     }
+    var tempDegree = current_input * (180 / Math.PI); //ONLY ACCURATE IF THE INPUT IS ASSURED TO BE IN RADIANS
     current_input = Math.tan(current_input);
-    displaycurrent_input();
+    displayCurrentInput();
     checkZero();
 }
 
@@ -291,37 +307,57 @@ function checkZero() {
 }
 
 /**
- * Converts answer from degrees to radian
+ * Converts current input from degrees to radian
  */
 function toRadian() {
     if (current_input == 0 || current_input == ""){
         return;
     }
-    if (start_mode == "Radian") {
-        console.log("already in radians");
-    } else {
     current_input = current_input * (Math.PI / 180);
-    start_mode = "Radian";
-    console.log("changing to radians");
-    }
     displayCurrentInput();
 }
 
 /**
- * Converts answer from radians to degrees
+ * Converts integer from degrees to radians
+ * @param {number} number The number in degrees
+ */
+function calcToRadian(number) {
+    return number * (Math.PI / 180);
+}
+
+/**
+ * Converts current input from radians to degrees
  */
 function toDegree() {
     if (current_input == 0 || current_input == ""){
         return;
     }
-    if (start_mode == "Degree") {
-        console.log("already in degrees");
-    } else {
     current_input = current_input * (180 / Math.PI);
-    start_mode = "Degree";
-        console.log("changing to degrees");
-    }
     displayCurrentInput();
+}
+
+/**
+ * Converts integer from radians to degrees
+ * @param {number} number The number in radians
+ */
+function calcToDegree(number) {
+    return number * (180 / Math.PI);
+}
+
+/**
+ * Converts trig mode to degrees
+ */
+function modeDegree(id) {
+    trig_mode = "Degree";
+    document.getElementById(id).innerHTML = "TRIGMODE: " + trig_mode;
+}
+
+/**
+ * Converts trig mode to radians
+ */
+function modeRadian(id) {
+    trig_mode = "Radian";
+    document.getElementById(id).innerHTML = "TRIGMODE: " + trig_mode;
 }
 
 // memory functions

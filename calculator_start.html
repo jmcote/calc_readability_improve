@@ -14,10 +14,10 @@
 <body>
     <div class="container">
         <h1>Calculator App</h1>
-        <div class="alert alert-info alert-dismissable">
-     <a href="#" class="close" data-dismiss="alert">×</a>
-     The calculator begins in radians
-   </div>
+        <div id="trigMode" class="alert alert-info alert-dismissable">
+            <a href="#" class="close" data-dismiss="alert">×</a>
+            TRIGMODE: Radian
+        </div>
         <form>
             <p>
                 <input type="text" id="screen">
@@ -35,11 +35,17 @@
             </p>
             <p>
                 <div class="btn-group">
-                    <button type="button" onclick="sin()" class="btn btn-primary">sin</button>
-                    <button type="button" onclick="cos()" class="btn btn-primary">cos</button>
-                    <button type="button" onclick="tan()" class="btn btn-primary">tan</button>
-                    <button type="button" onclick="toRadian()" id="rad" class="btn btn-primary">rad</button>
-                    <button type="button" onclick="toDegree()" id="deg" class="btn btn-primary">deg</button>
+                    <button type="button" onclick="modeDegree('trigMode')" class="btn btn-warning">TRIGMODE: Degrees</button>
+                    <button type="button" onclick="modeRadian('trigMode')" class="btn btn-warning">TRIGMODE: Radians</button>
+                </div>
+            </p>
+            <p>
+                <div class="btn-group">
+                    <button type="button" onclick="mySin()" class="btn btn-primary">sin</button>
+                    <button type="button" onclick="myCos()" class="btn btn-primary">cos</button>
+                    <button type="button" onclick="myTan()" class="btn btn-primary">tan</button>
+                    <button type="button" onclick="toRadian()" id="rad" class="btn btn-primary">toRad</button>
+                    <button type="button" onclick="toDegree()" id="deg" class="btn btn-primary">toDeg</button>
                 </div>
             </p>
             <p>
@@ -50,7 +56,7 @@
                     <button type="button" onclick="mminus()" class="btn btn-warning">m-</button>
                 </div> <div class="btn-group">
                         <button type="button" onclick="inverse()" class="btn btn-primary">1/x</button>
-    </div>
+                </div>
             </p>
             <p>
                 <div class="btn-group">
