@@ -176,3 +176,32 @@ QUnit.test( "Add too many digits test", function( assert ) {
     assert.ok( checkTooManyDigits, "Passed - Expected too many digits error");
     allClear();
 });
+
+QUnit.test("Memory  and Memory Recall Test", function( assert ){
+    allClear();
+    addDigit(5);
+    ms();
+    mr();
+    assert.equal(document.getElementById("screen").value, "5", "Passed - Expected 5");
+    allClear();
+});
+
+QUnit.test("Adding Current Value to Memory Test", function( assert ){
+    allClear();
+    addDigit(5);
+    ms();
+    allClear();
+    addDigit(5);
+    mplus();
+    allClear();
+    mr();
+    assert.equal(document.getElementById("screen").value, "10", "Passed - Expected 10")
+    allClear();
+});
+
+QUnit.test("Pi Test", function( assert ){
+    addDigit(7);
+    pi();
+    assert.equal(document.getElementById("screen").value, "3.141592653589793", "Passed - Expected 3.141592653589793")
+    allClear();
+});
