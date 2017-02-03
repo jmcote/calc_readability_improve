@@ -240,6 +240,9 @@ function pi() {
  * Sin of current input
  */
 function sin() {
+    if (current_input == 0 || current_input == ""){
+        return;
+    }
     current_input = Math.sin(current_input);
     displayCurrentInput();
     checkZero();
@@ -249,6 +252,9 @@ function sin() {
  * Finds cosine of current inout
  */
 function cos() {
+    if (current_input == 0 || current_input == ""){
+        return;
+    }
     current_input = Math.cos(current_input);
     displayCurrentInput();
     checkZero();
@@ -258,6 +264,17 @@ function cos() {
  * Finds tanget of current input
  */
 function tan() {
+    if (current_input == 0 || current_input == ""){
+        return;
+    }
+    if (start_mode == "Radians") {
+        var temp = = current_input * (180 / Math.PI);
+        if (current_input == 90 || current_input == 270) {
+         return;
+        }
+    }else if ( start_mode == "Degrees" && (current_input == 90 || current_input == 270)) {
+        return;
+    }
     current_input = Math.tan(current_input);
     displaycurrent_input();
     checkZero();
@@ -277,6 +294,9 @@ function checkZero() {
  * Converts answer from degrees to radian
  */
 function toRadian() {
+    if (current_input == 0 || current_input == ""){
+        return;
+    }
     if (start_mode == "Radian") {
         console.log("already in radians");
     } else {
@@ -291,6 +311,9 @@ function toRadian() {
  * Converts answer from radians to degrees
  */
 function toDegree() {
+    if (current_input == 0 || current_input == ""){
+        return;
+    }
     if (start_mode == "Degree") {
         console.log("already in degrees");
     } else {
