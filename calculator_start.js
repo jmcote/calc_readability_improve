@@ -4,6 +4,8 @@ var memory = "0";
 var operator = 0;
 var other_memory = current_input;
 var start_mode = "";
+var divideByZero = false;
+var tooManyDigits = false;
 
 /**
  * Helper function for displaying the current input
@@ -17,7 +19,7 @@ function displayCurrentInput() {
  * @param {number} dig The digit being added
  */
 function addDigit(dig) {
-    var tooManyDigits = false;
+    tooManyDigits = false;
     if (current_input.length + 1 > 18) {
         alert("No more than 18 characters");
         tooManyDigits = true;
@@ -94,7 +96,7 @@ function storeOperator(op) {
  * Calculate using operator, the memory and what is current
  */
 function calculate() {
-    var divideByZero = false;
+    divideByZero = false;
     if (operator == 1) {
         current_input = eval(memory) * eval(current_input);
     };
@@ -331,4 +333,20 @@ function mplus() {
  */
 function mminus() {
     other_memory = eval(other_memory) - eval(current_input);
+}
+
+/**
+ * Returns whether a too many digits error has been reached
+ * @returns {boolean} Whether a too many digits error has been reached
+ */
+function checkTooManyDigits () {
+    return tooManyDigits;
+}
+
+/**
+ * Returns whether a divide by zero error has been reached
+ * @returns {boolean} Whether a divide by zero error has been reached
+ */
+function checkDivideByZero () {
+    return divideByZero;
 }
