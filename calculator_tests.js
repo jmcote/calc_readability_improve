@@ -177,7 +177,7 @@ QUnit.test( "Add too many digits test", function( assert ) {
     allClear();
 });
 
-QUnit.test("Memory  and Memory Recall Test", function( assert ){
+QUnit.test("Memory and Memory Recall Test", function( assert ){
     allClear();
     addDigit(5);
     ms();
