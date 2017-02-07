@@ -246,7 +246,7 @@ function mySin() {
         var tempRad = calcToRadian(current_input);
         current_input = Math.sin(tempRad);
     } else if (trig_mode == "Radian") {
-        current_input = Math.sin(tempRad);
+        current_input = Math.sin(current_input);
     } else {
         current_input = "Invalid trig mode";
     }
@@ -266,7 +266,7 @@ function myCos() {
         var tempRad = calcToRadian(current_input);
         current_input = Math.cos(tempRad);
     } else if (trig_mode == "Radian") {
-        current_input = Math.cos(tempRad);
+        current_input = Math.cos(current_input);
     } else {
         current_input = "Invalid trig mode";
     }
@@ -286,13 +286,13 @@ function myTan() {
         var tempRad = calcToRadian(current_input);
         current_input = Math.tan(tempRad);
     } else if (trig_mode == "Radian") {
-        current_input = Math.tan(tempRad);
+        current_input = Math.tan(current_input);
     } else {
         current_input = "Invalid trig mode";
     }
-    var tempDegree = current_input * (180 / Math.PI); //ONLY ACCURATE IF THE INPUT IS ASSURED TO BE IN RADIANS
     current_input = Math.tan(current_input);
     displayCurrentInput();
+    console.log(current_input.toString().indexOf("e-"));
     checkZero();
 }
 
@@ -300,7 +300,7 @@ function myTan() {
  * Sets extremley small number to zero
  */
 function checkZero() {
-    if (current_input > 0 && current_input < 0.000000001) {
+    if (current_input.toString().indexOf("e-") !== -1 ) {
         current_input = 0;
         displayCurrentInput();
     }

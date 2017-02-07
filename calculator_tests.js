@@ -196,6 +196,6 @@ QUnit.test( "Add trig functions test", function( assert ) {
     addDigit(0);
     toRadian();
     myTan();
-    assert.equal(document.getElementById("screen").value, '-1', "Passed - Expected tan(180degrees) = -1");
+    assert.equal(document.getElementById("screen").value, '0', "Passed - Expected tan(180degrees) = 0");
     allClear();
 });
