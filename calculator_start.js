@@ -17,6 +17,7 @@ function Calculator(){
     this.percentage = percentage;
     this.factorial = factorial;
     this.factorial = factorial;
+    this.square = square;
     this.squareRoot = squareRoot;
     this.inverse = inverse;
     this.pi = pi;
@@ -41,7 +42,8 @@ function Calculator(){
 /**
  * Helper function for displaying the current input
  */
-function displayCurrentInput(){
+
+function displayCurrentInput() {
     document.getElementById('screen').value = this.currentInput;
 }
 
@@ -61,7 +63,7 @@ function addDigit(dig) {
     else {
         this.currentInput = this.currentInput + dig;
     }
-    this.displayCurrentInput;
+    this.displayCurrentInput();
 }
 
 /**
@@ -78,7 +80,7 @@ function addDecimal() {
             this.currentInput = this.currentInput + ".";
         }
     }
-    this.displayCurrentInput;
+    this.displayCurrentInput();
 }
 
 /**
@@ -91,7 +93,7 @@ function allClear() {
     console.log("Operator cleared");
     this.memory = "0"; //clear this.memory
     console.log("Memory cleared");
-    this.displayCurrentInput;
+    this.displayCurrentInput();
 }
 /**
  * Stores the last operator pushed for multiply, divide, add, subtract, or an exponential operation.
@@ -116,7 +118,7 @@ function storeOperator(op) {
     };
     this.memory = this.currentInput;  //store value
     this.currentInput = "";      //Set current input to nothing to show that the user has done something
-    this.displayCurrentInput;
+    this.displayCurrentInput();
     console.log(op);
     console.log(this.operator);
     console.log(this.memory);
@@ -167,7 +169,7 @@ function calculate() {
     };
     this.operator = 0; //clear operator
     this.memory = "0"; //clear memory
-    this.displayCurrentInput;
+    this.displayCurrentInput();
 }
 
 /**
@@ -178,7 +180,7 @@ function changeSign() {
         return;
     }
     this.currentInput = -1 * this.currentInput;
-    this.displayCurrentInput;
+    this.displayCurrentInput();
 }
 
 /**
@@ -188,7 +190,7 @@ function pleaseClear() {
     this.currentInput = "";
     console.log("Current input cleared");
     console.log("Operator remains " + this.operator + " and memory remains " + this.memory);
-    this.displayCurrentInput;
+    this.displayCurrentInput();
 }
 
 /**
@@ -199,7 +201,7 @@ function percentage() {
         this.currentInput = this.currentInput * 100;
         this.currentInput = this.currentInput.toString() + "%";
     }
-    this.displayCurrentInput;
+    this.displayCurrentInput();
 }
 
 /**
@@ -219,7 +221,7 @@ function factorial() {
         }
         this.currentInput = fact;
     }
-    this.displayCurrentInput;
+    this.displayCurrentInput();
 }
 
 /**
@@ -227,7 +229,7 @@ function factorial() {
  */
 function square() {
     this.currentInput = this.currentInput * this.currentInput;
-    this.displayCurrentInput;
+    this.displayCurrentInput();
 }
 
 /**
@@ -244,7 +246,7 @@ function squareRoot() {
     else {
         this.currentInput = Math.sqrt(this.currentInput);
     }
-    this.displayCurrentInput;
+    this.displayCurrentInput();
 }
 
 /**
@@ -252,7 +254,7 @@ function squareRoot() {
  */
 function inverse() {
     this.currentInput = 1 / this.currentInput;
-    this.displayCurrentInput;
+    this.displayCurrentInput();
 }
 
 
@@ -263,7 +265,7 @@ function inverse() {
  */
 function pi() {
     this.currentInput = Math.PI;
-    this.displayCurrentInput;
+    this.displayCurrentInput();
 }
 
 /**
@@ -282,7 +284,7 @@ function mySin() {
         this.currentInput = "Invalid trig mode";
     }
     //this.currentInput = Math.sin(this.currentInput);
-    this.displayCurrentInput;
+    this.displayCurrentInput();
     this.checkZero();
 }
 
@@ -302,7 +304,7 @@ function myCos() {
         this.currentInput = "Invalid trig mode";
     }
     //this.currentInput = Math.cos(this.currentInput);
-    this.displayCurrentInput;
+    this.displayCurrentInput();
     this.checkZero();
 }
 
@@ -322,7 +324,7 @@ function myTan() {
         this.currentInput = "Invalid trig mode";
     }
     this.currentInput = Math.tan(this.currentInput);
-    this.displayCurrentInput;
+    this.displayCurrentInput();
     console.log(this.currentInput.toString().indexOf("e-"));
     this.checkZero();
 }
@@ -333,7 +335,7 @@ function myTan() {
 function checkZero() {
     if (this.currentInput.toString().indexOf("e-") !== -1 ) {
         this.currentInput = 0;
-        this.displayCurrentInput;
+        this.displayCurrentInput();
     }
 }
 
@@ -345,7 +347,7 @@ function toRadian() {
         return;
     }
     this.currentInput = this.currentInput * (Math.PI / 180);
-    this.displayCurrentInput;
+    this.displayCurrentInput();
 }
 
 /**
@@ -364,7 +366,7 @@ function toDegree() {
         return;
     }
     this.currentInput = this.currentInput * (180 / Math.PI);
-    this.displayCurrentInput;
+    this.displayCurrentInput();
 }
 
 /**
@@ -406,7 +408,7 @@ function ms() {
  */
 function mr() {
     this.currentInput = this.otherMemory;
-    this.displayCurrentInput;
+    this.displayCurrentInput();
     console.log("memory is " + this.otherMemory);
 }
 

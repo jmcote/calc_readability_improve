@@ -10,6 +10,7 @@ QUnit.test( "addDigit Method Test", function( assert ) {
 
 // Test adding one, then two decimals
 QUnit.test( "addDecimal Method Test", function( assert ) {
+    var calculator = new Calculator();
     calculator.allClear();
     calculator.addDecimal();
     calculator.addDigit('2');
@@ -20,6 +21,7 @@ QUnit.test( "addDecimal Method Test", function( assert ) {
 
 //US1: As a user, I want to be able to press a button and change the sign of the current number that I have inputted into the calculator.
 QUnit.test( "changeSign Method Test", function( assert ) {
+    var calculator = new Calculator();
     calculator.allClear();
     calculator.changeSign();
     calculator.addDigit('5');
@@ -30,6 +32,7 @@ QUnit.test( "changeSign Method Test", function( assert ) {
 
 //US2: As a user I want to be able to press a button and change the inputed number on the calculator's screen to change to a percentage.
 QUnit.test( "percentage Method Test", function( assert ) {
+    var calculator = new Calculator();
     calculator.allClear();
     calculator.addDigit('5');
     calculator.percentage();
@@ -39,6 +42,7 @@ QUnit.test( "percentage Method Test", function( assert ) {
 
 //US3: As a user, I want to be able to calculate the inverse of a number simply by pressing a button.
 QUnit.test( "inverse Method Test", function( assert ) {
+    var calculator = new Calculator();
     calculator.allClear();
     calculator.addDigit(2);
     calculator.inverse();
@@ -48,6 +52,7 @@ QUnit.test( "inverse Method Test", function( assert ) {
 
 //US4: As a user I want to be able to calculate the factorial of a number by simply pressing a button.
 QUnit.test( "Add facotiral Method Test", function( assert ) {
+    var calculator = new Calculator();
     calculator.allClear();
     calculator.addDigit(0);
     calculator.factorial();
@@ -69,6 +74,7 @@ QUnit.test( "Add facotiral Method Test", function( assert ) {
 
 //US5: As a user I want to be able to calculate the square root of a number by simply pressing a button.
 QUnit.test( "squareRoot Method Test", function( assert ) {
+    var calculator = new Calculator();
     calculator.allClear();
     calculator.addDigit(1);
     calculator.addDigit(6);
@@ -95,6 +101,7 @@ QUnit.test( "squareRoot Method Test", function( assert ) {
 
 //US6: As a user I want to be able to calculate the square of a number by simply pressing a button.
 QUnit.test( "square Method Test", function( assert ) {
+    var calculator = new Calculator();
     calculator.allClear();
     calculator.addDigit(1);
     calculator.addDigit(2);
@@ -117,6 +124,7 @@ QUnit.test( "square Method Test", function( assert ) {
 
 //US7: As a user who sometimes makes mistakes when pressing buttons on the keypad, I want to be able to press a button that clears my current input, but not the stored procedure.
 QUnit.test( "pleaseClear Method Test", function( assert ) {
+    var calculator = new Calculator();
     calculator.allClear();
     calculator.addDigit('2');
     calculator.storeOperator('^');
@@ -128,6 +136,7 @@ QUnit.test( "pleaseClear Method Test", function( assert ) {
 
 //US8: Bug Alert! There is a bug in the calculator app! As a careless user I want to be told that I just tried to divide by zero, which I should be told is not allowed.
 QUnit.test( "checkDivideByZero Method Test", function( assert ) {
+    var calculator = new Calculator();
     calculator.allClear();
     calculator.addDigit(5);
     calculator.storeOperator('/');
@@ -139,6 +148,7 @@ QUnit.test( "checkDivideByZero Method Test", function( assert ) {
 
 //US9: Bug Alert! As an easily confused user I don't want to be able to type numbers into the screen that causes some of the numbers to disappear off the screen, thus confusing me about what I actually typed.
 QUnit.test( "too many digits Test", function( assert ) {
+    var calculator = new Calculator();
     calculator.allClear();
     calculator.addDigit(5);
     calculator.addDigit(5);
@@ -166,6 +176,7 @@ QUnit.test( "too many digits Test", function( assert ) {
 
 //Test Trig Methods
 QUnit.test( "Trig Methods Test", function( assert ) {
+    var calculator = new Calculator();
     calculator.allClear();
     calculator.addDigit(9);
     calculator.addDigit(0);
