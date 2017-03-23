@@ -8,7 +8,7 @@ function Calculator(){
     this.tooManyDigits = false;
     this.displayCurrentInput = displayCurrentInput;
     this.addDigit = addDigit;
-    this.this.addDecimal = addDecimal;
+    this.addDecimal = addDecimal;
     this.allClear = allClear;
     this.storeOperator = storeOperator;
     this.calculate = calculate;
@@ -25,6 +25,17 @@ function Calculator(){
     this.myTan = myTan;
     this.checkZero = checkZero;
     this.toRadian = toRadian;
+    this.calcToRadian = calcToRadian;
+    this.toDegree = toDegree;
+    this.calcToDegree = calcToDegree;
+    this.modeDegree = modeDegree;
+    this.modeRadian = modeRadian;
+    this.ms = ms;
+    this.mr = mr;
+    this.mplus = mplus;
+    this.mminus = mminus;
+    this.checkTooManyDigits = checkTooManyDigits;
+    this.checkDivideByZero = checkDivideByZero;
 }
 
 /**
@@ -263,7 +274,7 @@ function mySin() {
         return;
     }
     if (this.trigMode == "Degree") {
-        var tempRad = calcToRadian(this.currentInput);
+        var tempRad = this.calcToRadian(this.currentInput);
         this.currentInput = Math.sin(tempRad);
     } else if (this.trigMode == "Radian") {
         this.currentInput = Math.sin(this.currentInput);
@@ -283,7 +294,7 @@ function myCos() {
         return;
     }
     if (this.trigMode == "Degree") {
-        var tempRad = calcToRadian(this.currentInput);
+        var tempRad = this.calcToRadian(this.currentInput);
         this.currentInput = Math.cos(tempRad);
     } else if (this.trigMode == "Radian") {
         this.currentInput = Math.cos(this.currentInput);
@@ -303,7 +314,7 @@ function myTan() {
         return;
     }
     if (this.trigMode == "Degree") {
-        var tempRad = calcToRadian(this.currentInput);
+        var tempRad = this.calcToRadian(this.currentInput);
         this.currentInput = Math.tan(tempRad);
     } else if (this.trigMode == "Radian") {
         this.currentInput = Math.tan(this.currentInput);
