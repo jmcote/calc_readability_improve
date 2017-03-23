@@ -142,7 +142,7 @@ QUnit.test( "checkDivideByZero Method Test", function( assert ) {
     calculator.storeOperator('/');
     calculator.addDigit(0);
     calculator.calculate();
-    assert.ok( checkDivideByZero(), "Passed - Expected divide by zero error");
+    assert.ok( calculator.checkDivideByZero(), "Passed - Expected divide by zero error");
     calculator.allClear();
 });
 
