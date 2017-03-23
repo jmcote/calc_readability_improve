@@ -1,3 +1,4 @@
+    var calculator = new Calculator();
 
 // Test for inputing digits
 QUnit.test( "addDigit Method Test", function( assert ) {
