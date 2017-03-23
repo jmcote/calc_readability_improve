@@ -1,7 +1,6 @@
-    var calculator = new Calculator();
-
 // Test for inputing digits
 QUnit.test( "addDigit Method Test", function( assert ) {
+    var calculator = new Calculator();
     calculator.allClear();
     calculator.addDigit('1');
     calculator.addDigit('2');

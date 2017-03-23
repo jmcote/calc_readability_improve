@@ -41,7 +41,7 @@ function Calculator(){
 /**
  * Helper function for displaying the current input
  */
-function displayCurrentInput {
+function displayCurrentInput(){
     document.getElementById('screen').value = this.currentInput;
 }
 
